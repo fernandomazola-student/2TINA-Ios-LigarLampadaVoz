@@ -34,10 +34,11 @@ class MainActivity : AppCompatActivity() {
 
         if (resultCode == Activity.RESULT_OK) {
             val palavras = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-            var palavra = palavras[0]
+            val palavra = palavras[0]
 
             if(palavra == "ligar"){
                 doAsync {
+                    //Colocar o ip da onde esta api (se for em casa e local, coloca o ip da maquina)
                     URL("http://10.0.2.2:3000/ligar").readText()
                 }
             }else if(palavra == "desligar"){
