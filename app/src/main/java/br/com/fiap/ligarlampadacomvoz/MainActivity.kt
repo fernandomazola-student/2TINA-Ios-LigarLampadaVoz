@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.view.View
+import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.toast
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
@@ -35,9 +37,11 @@ class MainActivity : AppCompatActivity() {
             var palavra = palavras[0]
 
             if(palavra == "ligar"){
-
+                doAsync {
+                    URL("http://10.0.2.2:3000/ligar").readText()
+                }
             }else if(palavra == "desligar"){
-
+                URL("http://10.0.2.2:3000/desligar").readText()
             }else{
                 toast("Comando não reconhecido")
             }
